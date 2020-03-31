@@ -30,14 +30,15 @@ public class Main {
             JpaUtil.annulerTransaction();
             resultat = null;
         } finally {
-            JpaUtil.fermerContextePersistance();
         }
-        
+        System.out.println(resultat);
         Client c_test = daoC.chercherParMail(c1.getMail());
+        JpaUtil.fermerContextePersistance();
         System.out.println(c_test);
     }
     
     public static void main(String[] args) {
+        JpaUtil.init();
         testInscriptionClient();
     }
     
