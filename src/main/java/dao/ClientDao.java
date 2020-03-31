@@ -23,7 +23,7 @@ public class ClientDao {
     
     public Client chercherParMail(String clientMail) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Client> query = em.createQuery("SELECT c FROM Client c WHERE c.mail = :mail", Client.class);
+        TypedQuery<Client> query = em.createQuery("SELECT c FROM Utilisateur c WHERE c.mail = :mail", Client.class);
         query.setParameter("mail", clientMail); // correspond au paramètre ":mail" dans la requête
         List<Client> clients = query.getResultList();
         Client result = null;
@@ -35,7 +35,7 @@ public class ClientDao {
     
     public List<Client> listerClients() {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Client> query = em.createQuery("SELECT c FROM Client c ORDER BY c.nom ASC, c.prenom ASC", Client.class);
+        TypedQuery<Client> query = em.createQuery("SELECT c FROM Utilisateur c ORDER BY c.nom ASC, c.prenom ASC", Client.class);
         return query.getResultList();
     }
     
