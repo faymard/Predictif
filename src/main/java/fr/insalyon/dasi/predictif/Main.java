@@ -18,7 +18,7 @@ import dao.JpaUtil;
 public class Main {
 
     public static void testInscriptionClient() {
-        Client c1 = new Client("6 rue des zobs", "Monsieur", "Pastissier", "Michel", "pastis@jaune.fr", "0651515151", "jaune");
+        Client c1 = new Client("6 rue des zobs", "Monsieur", "Pastissier", "Michel", "pastis@jaune.fr", "0651515151", "jaune", null);
         //System.out.println(c1);
         ClientDao daoC = new ClientDao();
         JpaUtil.creerContextePersistance();
