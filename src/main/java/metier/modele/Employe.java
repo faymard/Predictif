@@ -6,12 +6,14 @@
 package metier.modele;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 
 
 /**
  *
  * @author Pierre
  */
+@Entity
 public class Employe extends Utilisateur implements Serializable {
 
     private char genre;
