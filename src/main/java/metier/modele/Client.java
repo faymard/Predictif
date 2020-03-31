@@ -6,6 +6,7 @@
 package metier.modele;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 /**
@@ -17,6 +18,7 @@ public class Client extends Utilisateur implements Serializable {
     
     private String address;
     private String civilite;
+    private Date dateDeNaissance;
     
     @OneToOne
     private ProfilAstral profil = null;
@@ -25,10 +27,11 @@ public class Client extends Utilisateur implements Serializable {
         
     }
 
-    public Client(String address, String civilite, String nom, String prenom, String mail, String telephone, String motDePasse) {
+    public Client(String address, String civilite, String nom, String prenom, String mail, String telephone, String motDePasse, Date dateDeNaissance) {
         super(nom, prenom, mail, telephone, motDePasse);
         this.address = address;
         this.civilite = civilite;
+        this.dateDeNaissance = dateDeNaissance;
     }
     
     
@@ -56,10 +59,20 @@ public class Client extends Utilisateur implements Serializable {
         this.profil = profil;
     }
 
+    public Date getDateDeNaissance() {
+        return dateDeNaissance;
+    }
+
+    public void setDateDeNaissance(Date dateDeNaissance) {
+        this.dateDeNaissance = dateDeNaissance;
+    }
+    
+    
+
     @Override
     public String toString() {
        
-        return super.toString()+ "Client{" + "address=" + address + ", civilite=" + civilite + '}';
+        return super.toString()+ "Client{" + "address=" + address + ", civilite=" + civilite + ", dateDeNaissance=" + dateDeNaissance + '}';
     }
     
     

@@ -27,18 +27,16 @@ public class Utilisateur implements Serializable {
     private String mail;
     private String telephone;
     private String motDePasse;
-    private Date dateDeNaissance;
 
     protected Utilisateur() {
     }
 
-    public Utilisateur(String nom, String prenom, String mail, String telephone, String motDePasse, Date dateDeNaissance) {
+    public Utilisateur(String nom, String prenom, String mail, String telephone, String motDePasse) {
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
         this.telephone = telephone;
         this.motDePasse = motDePasse;
-        this.dateDeNaissance = dateDeNaissance;
     }
 
     public Long getId() {
@@ -85,17 +83,9 @@ public class Utilisateur implements Serializable {
         this.motDePasse = motDePasse;
     }
 
-    public Date getDateDeNaissance() {
-        return dateDeNaissance;
-    }
-
-    public void setDateDeNaissance(Date dateDeNaissance) {
-        this.dateDeNaissance = dateDeNaissance;
-    }
-
     @Override
     public String toString() {
-        return "Utilisateur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", telephone=" + telephone + ", motDePasse=" + motDePasse + ", dateDeNaissance=" + dateDeNaissance + '}';
+        return "Utilisateur{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", telephone=" + telephone + ", motDePasse=" + motDePasse + '}';
     }
 
     
