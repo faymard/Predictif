@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 /**
  *
  * @author Florian
@@ -18,6 +19,7 @@ public class Client extends Utilisateur implements Serializable {
     
     private String address;
     private String civilite;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDeNaissance;
     
     @OneToOne

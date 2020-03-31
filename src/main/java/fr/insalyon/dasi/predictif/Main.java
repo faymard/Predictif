@@ -100,6 +100,7 @@ public class Main {
         JpaUtil.init();
         testInscriptionClient();
         insererEmployes();
+        insererMediums();
     }
 
 }
