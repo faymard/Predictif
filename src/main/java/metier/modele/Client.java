@@ -7,6 +7,7 @@ package metier.modele;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 /**
  *
  * @author Florian
@@ -16,6 +17,9 @@ public class Client extends Utilisateur implements Serializable {
     
     private String address;
     private String civilite;
+    
+    @OneToOne
+    private ProfilAstral profil = null;
     
     public Client() {
         
@@ -42,6 +46,14 @@ public class Client extends Utilisateur implements Serializable {
 
     public void setCivilite(String civilite) {
         this.civilite = civilite;
+    }
+
+    public ProfilAstral getProfil() {
+        return profil;
+    }
+
+    public void setProfil(ProfilAstral profil) {
+        this.profil = profil;
     }
 
     @Override
