@@ -10,6 +10,11 @@ import metier.modele.Employe;
 import dao.ClientDao;
 import dao.EmployeDao;
 import dao.JpaUtil;
+import dao.MediumDao;
+import metier.modele.Astrologue;
+import metier.modele.Cartomancien;
+import metier.modele.Medium;
+import metier.modele.Spirite;
 
 /**
  *
@@ -59,6 +64,33 @@ public class Main {
         } catch (Exception ex) {
             JpaUtil.annulerTransaction();
 
+        }
+
+        JpaUtil.fermerContextePersistance();
+    }
+
+    public static void insererMediums() {
+
+        Medium[] tm = new Medium[3];
+
+        tm[0] = new Astrologue("École Normale Supérieure d’Astrologie", 2006, "Serena", 'F', "Basée  à  Champigny-sur-Marne, Serena vousrévèlera votre  avenir  pour éclairer  votre passé.");
+        tm[1] = new Cartomancien("Mme.Irma", 'F', "Comprenez votre entourage grâce à mes cartes! Résultats rapides");
+        tm[2] = new Spirite("Boule de cristal", "Gwenaëlle", 'F', "Spécialiste des grandes conversations au-delà de TOUTES les frontières");
+
+        JpaUtil.creerContextePersistance();
+
+        MediumDao daoM = new MediumDao();
+
+        try {
+            JpaUtil.ouvrirTransaction();
+
+            for (Medium m : tm) {
+                daoM.creer(m);
+            }
+
+            JpaUtil.fermerContextePersistance();
+        } catch (Exception ex) {
+            JpaUtil.annulerTransaction();
         }
 
         JpaUtil.fermerContextePersistance();
