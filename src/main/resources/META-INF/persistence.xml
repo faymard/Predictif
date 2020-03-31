@@ -2,10 +2,14 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="predictif_pu" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>metier.modele.Utilisateur</class>
     <class>metier.modele.Client</class>
+    <class>metier.modele.Utilisateur</class>
     <class>metier.modele.Employe</class>
+    <class>metier.modele.Astrologue</class>
+    <class>metier.modele.Cartomancien</class>
+    <class>metier.modele.Medium</class>
     <class>metier.modele.ProfilAstral</class>
+    <class>metier.modele.Spirite</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/predictif"/>
       <property name="javax.persistence.jdbc.user" value="predictif"/>

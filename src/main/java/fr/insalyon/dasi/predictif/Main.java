@@ -78,7 +78,7 @@ public class Main {
         tm[2] = new Spirite("Boule de cristal", "Gwenaëlle", 'F', "Spécialiste des grandes conversations au-delà de TOUTES les frontières");
 
         JpaUtil.creerContextePersistance();
-
+        
         MediumDao daoM = new MediumDao();
 
         try {
@@ -88,7 +88,7 @@ public class Main {
                 daoM.creer(m);
             }
 
-            JpaUtil.fermerContextePersistance();
+            JpaUtil.validerTransaction();
         } catch (Exception ex) {
             JpaUtil.annulerTransaction();
         }
