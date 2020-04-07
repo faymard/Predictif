@@ -17,16 +17,32 @@ import javax.persistence.Entity;
 public class Employe extends Utilisateur implements Serializable {
 
     private char genre;
+    private boolean disponibilite;
+
+    private int nbConsultations;
 
     public Employe() {
     }
 
-    public Employe(char genre, String nom, String prenom, String mail, String telephone, String motDePasse) {
+    public Employe(char genre, String nom, String prenom, String mail, String telephone, String motDePasse){
         super(nom, prenom, mail, telephone, motDePasse);
         this.genre = genre;
+        this.disponibilite = true;
+        this.nbConsultations = 0;
     }
 
-    
+    public boolean getDisponibilite(){
+
+        return disponibilite;
+
+    }
+
+    public void setDisponibilite(boolean b)
+    {
+
+        this.disponibilite = b;
+
+    }
     
     public char getGenre() {
         return genre;
@@ -39,6 +55,14 @@ public class Employe extends Utilisateur implements Serializable {
     @Override
     public String toString() {
         return "Employe{" + "genre=" + genre + '}';
+    }
+
+    public int getNbConsultations() {
+        return nbConsultations;
+    }
+
+    public void incrNbConsultations() {
+        this.nbConsultations++;
     }
 
 }

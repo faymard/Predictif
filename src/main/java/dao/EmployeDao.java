@@ -42,5 +42,12 @@ public class EmployeDao {
         TypedQuery<Employe> query = em.createQuery("SELECT c FROM Utilisateur c ORDER BY c.nom ASC, c.prenom ASC", Employe.class);
         return query.getResultList();
     }
+
+    public List<Employe> listerEmployesDisponibleParSexe(char s) {
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        TypedQuery<Employe> query = em.createQuery("SELECT u FROM Employe u WHERE u.genre = :g AND u.disponibilite = 1 ORDER BY u.nbConsultations ASC", Employe.class);
+        query.setParameter("g", s);
+        return query.getResultList();
+    }
     
 }

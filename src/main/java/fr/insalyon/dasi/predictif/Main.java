@@ -5,9 +5,13 @@
  */
 package fr.insalyon.dasi.predictif;
 
+import java.util.List;
+
 import metier.modele.Client;
+import metier.modele.Consultation;
 import metier.modele.Employe;
 import dao.ClientDao;
+import dao.ConsultationDao;
 import dao.EmployeDao;
 import dao.JpaUtil;
 import dao.MediumDao;
@@ -15,6 +19,7 @@ import metier.modele.Astrologue;
 import metier.modele.Cartomancien;
 import metier.modele.Medium;
 import metier.modele.Spirite;
+import metier.service.Service;
 
 /**
  *
@@ -60,10 +65,9 @@ public class Main {
             for (Employe e : te) {
                 daoE.creer(e);
             }
-            JpaUtil.validerTransaction();
+            JpaUtil.validerTransaction(); 
         } catch (Exception ex) {
             JpaUtil.annulerTransaction();
-
         }
 
         JpaUtil.fermerContextePersistance();
@@ -96,11 +100,52 @@ public class Main {
         JpaUtil.fermerContextePersistance();
     }
 
+    public static void testerTypeMediums() {
+
+        JpaUtil.creerContextePersistance();
+        MediumDao daoM = new MediumDao();
+        List<Medium> liste = daoM.listerMediums();
+
+        for(Medium m : liste) {
+            System.out.println(m instanceof Astrologue);
+        }
+        JpaUtil.fermerContextePersistance();
+    }
+
+    public static void testerCreerConsultation() {
+        
+        JpaUtil.creerContextePersistance();
+        MediumDao daoM = new MediumDao();
+        ClientDao daoC = new ClientDao();
+
+        Client c = daoC.chercherParMail("pastis@jaune.fr");
+        Medium m = daoM.chercherParId(new Long(1));
+        
+
+        Service mesServices = new Service();
+        boolean test = mesServices.creerConsultation(c, m);
+        System.out.println(test);
+
+        ConsultationDao daoCo = new ConsultationDao();
+        JpaUtil.creerContextePersistance();
+        List<Consultation> toutes = daoCo.listerConsultations();
+        JpaUtil.fermerContextePersistance();
+
+        for(Consultation co : toutes)
+        {
+
+            System.out.println(co.toString());
+            
+        }
+
+    }
     public static void main(String[] args) {
         JpaUtil.init();
         testInscriptionClient();
         insererEmployes();
         insererMediums();
+        //testerTypeMediums();
+        testerCreerConsultation();
     }
 
 }

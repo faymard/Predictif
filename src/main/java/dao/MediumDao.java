@@ -28,9 +28,9 @@ public class MediumDao {
     }
     
     
-    public List<Medium> listerClients() {
+    public List<Medium> listerMediums() {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Medium> query = em.createQuery("SELECT c FROM Medium c ORDER BY c.nom ASC, c.prenom ASC", Medium.class);
+        TypedQuery<Medium> query = em.createQuery("SELECT c FROM Medium c", Medium.class);
         return query.getResultList();
     }
     
