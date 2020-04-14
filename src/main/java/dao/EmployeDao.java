@@ -27,7 +27,7 @@ public class EmployeDao {
     
     public Employe chercherParMail(String clientMail) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Employe> query = em.createQuery("SELECT e FROM Utilisateur e WHERE e.mail = :mail", Employe.class);
+        TypedQuery<Employe> query = em.createQuery("SELECT e FROM Employe e WHERE e.mail = :mail", Employe.class);
         query.setParameter("mail", clientMail); // correspond au paramètre ":mail" dans la requête
         List<Employe> employes = query.getResultList();
         Employe result = null;
@@ -39,9 +39,11 @@ public class EmployeDao {
     
     public List<Employe> listerEmployes() {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Employe> query = em.createQuery("SELECT c FROM Utilisateur c ORDER BY c.nom ASC, c.prenom ASC", Employe.class);
+        TypedQuery<Employe> query = em.createQuery("SELECT c FROM Employe c ORDER BY c.nom ASC, c.prenom ASC", Employe.class);
         return query.getResultList();
     }
+
+    
 
     public List<Employe> listerEmployesDisponibleParSexe(char s) {
         EntityManager em = JpaUtil.obtenirContextePersistance();

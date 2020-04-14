@@ -33,5 +33,7 @@ public class MediumDao {
         TypedQuery<Medium> query = em.createQuery("SELECT c FROM Medium c", Medium.class);
         return query.getResultList();
     }
+
+    
     
 }
